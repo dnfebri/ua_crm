@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/page', [PageController::class, 'dashboard']);
+Route::get('/', [PageController::class, 'dashboard'])->name('dashboard');

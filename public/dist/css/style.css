@@ -1,0 +1,11 @@
+/* Users Tabel */
+#tabel-user .card .table-responsive {
+  height: 350px;
+}
+
+@media screen and (max-width: 550px) {
+  #tabel-user .card .table-responsive {
+    height: 100%;
+  }
+}
+

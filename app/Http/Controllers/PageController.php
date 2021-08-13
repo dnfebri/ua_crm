@@ -8,6 +8,6 @@ class PageController extends Controller
 {
     public function dashboard()
     {
-        echo "ini halaman dashboard";
+        return view('pages.dashboard');
     }
 }
