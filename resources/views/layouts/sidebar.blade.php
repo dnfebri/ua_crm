@@ -43,7 +43,7 @@
 				<li class="nav-header">MASTER DATA</li>
 				<li class="nav-item">
 					<a href="data-arsip.html" class="nav-link">
-						<i class="nav-icon fa-fw fas fa-book"></i>
+						<i class="nav-icon fa-fw fas fa-edit"></i>
 						<p>Karyawan</p>
 					</a>
 				</li>
