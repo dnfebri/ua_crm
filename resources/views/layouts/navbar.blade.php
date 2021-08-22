@@ -15,7 +15,7 @@
   </li> -->
 	</ul>
 
-	<h4 class="m-0">{{ $title ?? '' }}</h4>
+	<h4 class="m-0">{{ $side ?? '' }}</h4>
 
 	<!-- Right navbar links -->
 	<ul class="navbar-nav ml-auto">
@@ -23,7 +23,7 @@
 
 			<div class="info" data-toggle="dropdown">
 				<a href="#" class="d-inline mr-3 text-decoration-none text-body">Alexander</a>
-				<img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2 mr-3" style="width: 30px;"
+				<img src="{{url('img/profile/user2-160x160.jpg')}}" class="img-circle elevation-2 mr-3" style="width: 30px;"
 					alt="User Image">
 			</div>
 
