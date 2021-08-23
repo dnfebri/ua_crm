@@ -40,7 +40,7 @@
 
 				<li class="nav-header">MASTER DATA</li>
 				<li class="nav-item">
-					<a href="#" class="nav-link">
+					<a href="{{ route('karyawan.index') }}" class="nav-link" data-nav="{{ $side ?? '' }}">
 						<i class="nav-icon fa-fw fas fa-user-friends"></i>
 						<p>Karyawan</p>
 					</a>
@@ -58,7 +58,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="#" class="nav-link">
+					<a href="{{ route('jabatan.index') }}" class="nav-link" data-nav="{{ $side ?? '' }}">
 						<i class="nav-icon fa-fw fas fa-edit"></i>
 						<p>Jabatan</p>
 					</a>

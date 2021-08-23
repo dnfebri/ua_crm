@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Divisi;
+use App\Models\Jabatan;
 use Illuminate\Http\Request;
 
-class DivisiController extends Controller
+class JabatanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,8 @@ class DivisiController extends Controller
      */
     public function index()
     {
-        $divisis = Divisi::all();
-        return view('divisis.index', compact('divisis'));
+        $jabatans = Jabatan::all();
+        return view('jabatans.index', compact('jabatans'));
     }
 
     /**
@@ -39,25 +40,25 @@ class DivisiController extends Controller
         // Validation
         $request->validate(
             [
-                'nama_divisi' => 'required'
+                'nama_jabatan' => 'required'
             ],
             [
-                'nama_divisi.required' => 'Nama Devisi Harus diisi!'
+                'nama_jabatan.required' => 'Nama Jabatan Harus diisi!'
             ]
         );
 
-        Divisi::create($request->all());
+        Jabatan::create($request->all());
 
-        return redirect()->route('divisi.index')->with('massage', 'Devisi ' . $request->nama_divisi . ' berhasi ditambahkan!');
+        return redirect()->route('jabatan.index')->with('massage', 'Devisi ' . $request->nama_jabatan . ' berhasi ditambahkan!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Divisi  $divisi
+     * @param  \App\Models\Jabatan  $jabatan
      * @return \Illuminate\Http\Response
      */
-    public function show(Divisi $divisi)
+    public function show(Jabatan $jabatan)
     {
         //
     }
@@ -65,10 +66,10 @@ class DivisiController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Divisi  $divisi
+     * @param  \App\Models\Jabatan  $jabatan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Divisi $divisi)
+    public function edit(Jabatan $jabatan)
     {
         //
     }
@@ -77,10 +78,10 @@ class DivisiController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Divisi  $divisi
+     * @param  \App\Models\Jabatan  $jabatan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Divisi $divisi)
+    public function update(Request $request, Jabatan $jabatan)
     {
         //
     }
@@ -88,13 +89,13 @@ class DivisiController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Divisi  $divisi
+     * @param  \App\Models\Jabatan  $jabatan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Divisi $divisi)
+    public function destroy(Jabatan $jabatan)
     {
-        Divisi::destroy($divisi->id);
+        Jabatan::destroy($jabatan->id);
 
-        return redirect()->route('divisi.index')->with('massage', 'Divisi ' . $divisi->nama_divisi . ' berhasi <b class="text-danger">Dihapus</b>');
+        return redirect()->route('jabatan.index')->with('massage', 'jabatan ' . $jabatan->nama_jabatan . ' berhasi <b class="text-danger">Dihapus</b>');
     }
 }

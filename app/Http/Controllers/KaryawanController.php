@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Divisi;
+use App\Models\Karyawan;
 use Illuminate\Http\Request;
 
-class DivisiController extends Controller
+class KaryawanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,7 @@ class DivisiController extends Controller
      */
     public function index()
     {
-        $divisis = Divisi::all();
-        return view('divisis.index', compact('divisis'));
+        return view('karyawans.index');
     }
 
     /**
@@ -25,7 +24,7 @@ class DivisiController extends Controller
      */
     public function create()
     {
-        //
+        return view('karyawans.create');
     }
 
     /**
@@ -36,28 +35,16 @@ class DivisiController extends Controller
      */
     public function store(Request $request)
     {
-        // Validation
-        $request->validate(
-            [
-                'nama_divisi' => 'required'
-            ],
-            [
-                'nama_divisi.required' => 'Nama Devisi Harus diisi!'
-            ]
-        );
-
-        Divisi::create($request->all());
-
-        return redirect()->route('divisi.index')->with('massage', 'Devisi ' . $request->nama_divisi . ' berhasi ditambahkan!');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Divisi  $divisi
+     * @param  \App\Models\Karyawan  $karyawan
      * @return \Illuminate\Http\Response
      */
-    public function show(Divisi $divisi)
+    public function show(Karyawan $karyawan)
     {
         //
     }
@@ -65,10 +52,10 @@ class DivisiController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Divisi  $divisi
+     * @param  \App\Models\Karyawan  $karyawan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Divisi $divisi)
+    public function edit(Karyawan $karyawan)
     {
         //
     }
@@ -77,10 +64,10 @@ class DivisiController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Divisi  $divisi
+     * @param  \App\Models\Karyawan  $karyawan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Divisi $divisi)
+    public function update(Request $request, Karyawan $karyawan)
     {
         //
     }
@@ -88,13 +75,11 @@ class DivisiController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Divisi  $divisi
+     * @param  \App\Models\Karyawan  $karyawan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Divisi $divisi)
+    public function destroy(Karyawan $karyawan)
     {
-        Divisi::destroy($divisi->id);
-
-        return redirect()->route('divisi.index')->with('massage', 'Divisi ' . $divisi->nama_divisi . ' berhasi <b class="text-danger">Dihapus</b>');
+        //
     }
 }

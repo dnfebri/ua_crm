@@ -1,4 +1,4 @@
-@extends('layouts/main', ['title' => 'Daftar Nama Divisi', 'side' => 'Divisi'])
+@extends('layouts/main', ['title' => 'Daftar Nama Jabatan', 'side' => 'Jabatan'])
 
 @section('contents')
 <!-- Content Header (Page header) -->
@@ -6,7 +6,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1 class="m-0">Daftar Nama Divisi</h1>
+        <h1 class="m-0">Daftar Nama Jabatan</h1>
       </div><!-- /.col -->
 
     </div><!-- /.row -->
@@ -31,21 +31,21 @@
       <div class="col-sm-5">
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-          Tambah Divisi
+          Tambah Jabatan
         </button>
 
         <ol class="list-group list-group-numbered mt-3">
-          @foreach($divisis as $divisi)
+          @foreach($jabatans as $jabatan)
           <li class="list-group-item d-flex justify-content-between align-items-start">
             <div class="ms-2 me-auto">
-              <div class="fw-bold">{{$divisi->nama_divisi}}</div>
+              <div class="fw-bold">{{$jabatan->nama_jabatan}}</div>
             </div>
             <div>
               {{-- <button type="button" class="badge bg-black rounded-pill" data-bs-toggle="modal"
                 data-bs-target="#staticBackdrop">Detail</button> --}}
               <a href="#" class="badge bg-black rounded-pill text-decoration-none" data-bs-toggle="modal"
                 data-bs-target="#staticBackdrop">Detail</a>
-              <form action="{{ route('divisi.delete', ['divisi' => $divisi->id]) }}" method="post"
+              <form action="{{ route('jabatan.delete', ['jabatan' => $jabatan->id]) }}" method="post"
                 class="d-inline text-decoration-none">
                 @method('delete')
                 @csrf
@@ -69,18 +69,18 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Tambah Divisi</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">Tambah Jabatan</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="{{ route('divisi.store') }}" method="post">
+      <form action="{{ route('jabatan.store') }}" method="post">
         @csrf
         <div class="modal-body">
           <div class="mb-2">
-            <label for="nama_divisi" class="form-label">Nama Divisi</label>
-            <input type="text" class="form-control @error('nama_divisi') is-invalid @enderror" id="nama_divisi"
-              name="nama_divisi" value="{{ old('nama_divisi') }}" placeholder="Nama Divisi" required>
-            @error('nama_divisi')
-            <div id="nama_divisi" class="invalid-feedback">
+            <label for="nama_jabatan" class="form-label">Nama Jabatan</label>
+            <input type="text" class="form-control @error('nama_jabatan') is-invalid @enderror" id="nama_jabatan"
+              name="nama_jabatan" value="{{ old('nama_jabatan') }}" placeholder="Nama jabatan" required>
+            @error('nama_jabatan')
+            <div id="nama_jabatan" class="invalid-feedback">
               {{ $message }}
             </div>
             @enderror

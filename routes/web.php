@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ClubController;
 use App\Http\Controllers\DivisiController;
+use App\Http\Controllers\JabatanController;
+use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
@@ -45,6 +47,18 @@ Route::middleware('auth')->group(function () {
       // Route::get('/{divisi}/edit', [DivisiController::class, 'edit'])->name('edit');
       Route::post('', [DivisiController::class, 'store'])->name('store');
       // Route::put('/{divisi}', [DivisiController::class, 'update'])->name('update');
-      // Route::delete('/{divisi}/delete', [DivisiController::class, 'destroy'])->name('delete');
+      Route::delete('/{divisi}/delete', [DivisiController::class, 'destroy'])->name('delete');
    });
+
+   Route::prefix('jabatan')->name('jabatan.')->group(function () {
+      Route::get('', [JabatanController::class, 'index'])->name('index');
+      // Route::get('/create', [JabatanController::class, 'create'])->name('create');
+      // Route::get('/{jabatan}', [JabatanController::class, 'show'])->name('show');
+      // Route::get('/{jabatan}/edit', [JabatanController::class, 'edit'])->name('edit');
+      Route::post('', [JabatanController::class, 'store'])->name('store');
+      // Route::put('/{jabatan}', [JabatanController::class, 'update'])->name('update');
+      Route::delete('/{jabatan}/delete', [JabatanController::class, 'destroy'])->name('delete');
+   });
+
+   Route::resource('karyawan', KaryawanController::class);
 });

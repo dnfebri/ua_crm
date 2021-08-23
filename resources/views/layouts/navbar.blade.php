@@ -42,10 +42,14 @@
 					<!-- <span class="float-right text-muted text-sm">12 hours</span> -->
 				</a>
 				<div class="dropdown-divider"></div>
-				<a href="#" class="dropdown-item">
+				<a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
+				document.getElementById('logout-form').submit();">
 					<i class="fas fa-fw fa-sign-out-alt mr-2"></i> Logout
 					<!-- <span class="float-right text-muted text-sm">2 days</span> -->
 				</a>
+				<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+					@csrf
+				</form>
 				<div class="dropdown-divider"></div>
 				<!-- <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a> -->
 			</div>
