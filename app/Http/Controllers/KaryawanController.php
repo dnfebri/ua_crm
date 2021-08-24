@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Club;
+use App\Models\Divisi;
+use App\Models\Jabatan;
 use App\Models\Karyawan;
 use Illuminate\Http\Request;
 
@@ -24,7 +27,10 @@ class KaryawanController extends Controller
      */
     public function create()
     {
-        return view('karyawans.create');
+        $clubs = Club::all();
+        $divisis = Divisi::all();
+        $jabatans = Jabatan::all();
+        return view('karyawans.create', compact(['clubs', 'divisis', 'jabatans']));
     }
 
     /**
@@ -35,7 +41,20 @@ class KaryawanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validation
+        $request->validate(
+            [
+                'nama_karyawan' => 'required',
+                'club' => 'required',
+                'alamat_ktp' => 'required'
+            ],
+            [
+                'nama_karyawan.required' => 'Nama Karyawan Harus diisi!',
+                'alamat_ktp.required' => 'Alamat KTP Harus diisi!'
+            ]
+        );
+
+        dd($request);
     }
 
     /**

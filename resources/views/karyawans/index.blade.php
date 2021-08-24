@@ -42,27 +42,39 @@
           <tbody>
             <tr>
               <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>Otto</td>
-              <td>Otto</td>
-              <td>@mdo</td>
+              <td>Nama Karyawan</td>
+              <td>Clum</td>
+              <td>Divisi</td>
+              <td>Jabatan</td>
+              <td>
+                <a href="#" class="badge bg-black rounded-pill text-decoration-none">Detail</a>
+                <a href="#" class="badge bg-green rounded-pill text-decoration-none">Edit</a>
+                <a href="#" class="badge bg-red rounded-pill text-decoration-none">Delete</a>
+              </td>
             </tr>
             <tr>
               <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>Thornton</td>
-              <td>Thornton</td>
-              <td>@fat</td>
+              <td>Nama Karyawan</td>
+              <td>Clum</td>
+              <td>Divisi</td>
+              <td>Jabatan</td>
+              <td>
+                <a href="#" class="badge bg-black rounded-pill text-decoration-none">Detail</a>
+                <a href="#" class="badge bg-green rounded-pill text-decoration-none">Edit</a>
+                <a href="#" class="badge bg-red rounded-pill text-decoration-none">Delete</a>
+              </td>
             </tr>
             <tr>
               <th scope="row">3</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>Thornton</td>
-              <td>Thornton</td>
-              <td>@fat</td>
+              <td>Nama Karyawan</td>
+              <td>Clum</td>
+              <td>Divisi</td>
+              <td>Jabatan</td>
+              <td>
+                <a href="#" class="badge bg-black rounded-pill text-decoration-none">Detail</a>
+                <a href="#" class="badge bg-green rounded-pill text-decoration-none">Edit</a>
+                <a href="#" class="badge bg-red rounded-pill text-decoration-none">Delete</a>
+              </td>
             </tr>
           </tbody>
         </table>

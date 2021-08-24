@@ -20,6 +20,7 @@ class CreateKaryawansTable extends Migration
             $table->integer('club');
             $table->integer('divisi');
             $table->integer('jabatan');
+            $table->string('jenis_kelamin');
             $table->string('no_ktp');
             $table->string('alamat_ktp');
             $table->string('alamat_tmpt_tinggal');
@@ -31,7 +32,7 @@ class CreateKaryawansTable extends Migration
             $table->string('gol_darah');
             $table->string('agama');
             $table->string('status_pernikahan');
-            $table->integer('tanggunagn_anak');
+            $table->integer('tanggungan_anak');
             $table->string('no_rek_mandiri');
             $table->string('no_npwp');
             $table->string('no_bpjs_kesehatan');
