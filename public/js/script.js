@@ -13,24 +13,24 @@ item.forEach(link => {
 
 // ==================================================>
 // action view gambar Ubah ==========================>
-function priviewImg() {
-    const img = document.querySelector('#image');
-    const imgPreview = document.querySelector('.img-previuw');
-    const imgLabel = document.querySelector('.img-label');
+// function priviewImg() {
+//     const img = document.querySelector('#image');
+//     const imgPreview = document.querySelector('.img-previuw');
+//     const imgLabel = document.querySelector('.img-label');
 
-    if (imgLabel) {
-        imgLabel.textContent = img.files[0].name;
-    }
+//     if (imgLabel) {
+//         imgLabel.textContent = img.files[0].name;
+//     }
 
-    const fileImg = new FileReader();
-    fileImg.readAsDataURL(img.files[0]);
+//     const fileImg = new FileReader();
+//     fileImg.readAsDataURL(img.files[0]);
 
-    // console.log(fileImg.target.result);
+//     // console.log(fileImg.target.result);
 
-    fileImg.onload = function (e) {
-        imgPreview.src = e.target.result;
-    }
-}
+//     fileImg.onload = function (e) {
+//         imgPreview.src = e.target.result;
+//     }
+// }
 // action view gambar Ubah Akhir ====================>
 // ==================================================>
 
@@ -51,4 +51,27 @@ if (btnUbah) {
 };
 
 // Akhir Form Disabled ==============================>
+// ==================================================>
+
+// ==================================================>
+// action view gambar tambah ========================>
+
+const inputImg = document.querySelectorAll('.input-img');
+inputImg.forEach(function (el) {
+    el.addEventListener('change', function (e) {
+        let imgPreview = e.explicitOriginalTarget.nextElementSibling
+        let imgLabel = imgPreview.nextElementSibling
+
+        const fileImg = new FileReader();
+        fileImg.readAsDataURL(e.srcElement.files[0]);
+
+        fileImg.onload = function (e) {
+            imgPreview.src = e.target.result;
+        }
+
+        imgLabel.textContent = e.srcElement.files[0].name;
+    });
+});
+
+// action view gambar tambah Akhir ==================>
 // ==================================================>

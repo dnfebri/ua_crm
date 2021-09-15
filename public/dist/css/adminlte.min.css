@@ -15000,7 +15000,8 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 
 [class*=sidebar-dark-] .nav-header {
     background-color: inherit;
-    color: #d0d4db
+    font-weight: bold;
+    color: #4aff4a
 }
 
 [class*=sidebar-dark-] .sidebar a {

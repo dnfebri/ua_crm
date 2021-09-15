@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClubController;
 use App\Http\Controllers\DivisiController;
+use App\Http\Controllers\FilekaryawanController;
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\PageController;
@@ -58,6 +59,18 @@ Route::middleware('auth')->group(function () {
       Route::post('', [JabatanController::class, 'store'])->name('store');
       // Route::put('/{jabatan}', [JabatanController::class, 'update'])->name('update');
       Route::delete('/{jabatan}/delete', [JabatanController::class, 'destroy'])->name('delete');
+   });
+
+   Route::prefix('filekaryawan')->name('filekaryawan.')->group(function () {
+      Route::get('', function () {
+         return redirect()->route('karyawan.index');
+      });
+      Route::get('{filekaryawan}', [FilekaryawanController::class, 'create'])->name('create');
+      Route::post('/store', [FilekaryawanController::class, 'store'])->name('store');
+      Route::get('{filekaryawan}/edit', [FilekaryawanController::class, 'edit'])->name('edit');
+
+      // Proses Update akan dibuat menimpa file yang lama dan nama data di database tidak berubah
+      Route::put('/{filekaryawan}', [FilekaryawanController::class, 'update'])->name('update');
    });
 
    Route::resource('karyawan', KaryawanController::class);

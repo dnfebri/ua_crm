@@ -40,42 +40,21 @@
             </tr>
           </thead>
           <tbody>
+            @foreach($karyawan as $k)
             <tr>
-              <th scope="row">1</th>
-              <td>Nama Karyawan</td>
-              <td>Clum</td>
-              <td>Divisi</td>
-              <td>Jabatan</td>
+              <th scope="row">{{ $loop->iteration }}</th>
+              <td>{{ $k->nama_karyawan }}</td>
+              <td>{{ $k->nama_club }}</td>
+              <td>{{ $k->nama_divisi }}</td>
+              <td>{{ $k->nama_jabatan }}</td>
               <td>
-                <a href="#" class="badge bg-black rounded-pill text-decoration-none">Detail</a>
+                <a href="{{ route('karyawan.show', ['karyawan' => $k->id]) }}"
+                  class="badge bg-black rounded-pill text-decoration-none">Detail</a>
                 <a href="#" class="badge bg-green rounded-pill text-decoration-none">Edit</a>
                 <a href="#" class="badge bg-red rounded-pill text-decoration-none">Delete</a>
               </td>
             </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Nama Karyawan</td>
-              <td>Clum</td>
-              <td>Divisi</td>
-              <td>Jabatan</td>
-              <td>
-                <a href="#" class="badge bg-black rounded-pill text-decoration-none">Detail</a>
-                <a href="#" class="badge bg-green rounded-pill text-decoration-none">Edit</a>
-                <a href="#" class="badge bg-red rounded-pill text-decoration-none">Delete</a>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Nama Karyawan</td>
-              <td>Clum</td>
-              <td>Divisi</td>
-              <td>Jabatan</td>
-              <td>
-                <a href="#" class="badge bg-black rounded-pill text-decoration-none">Detail</a>
-                <a href="#" class="badge bg-green rounded-pill text-decoration-none">Edit</a>
-                <a href="#" class="badge bg-red rounded-pill text-decoration-none">Delete</a>
-              </td>
-            </tr>
+            @endforeach
           </tbody>
         </table>
 

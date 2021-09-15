@@ -1,4 +1,4 @@
-@extends('layouts/main', ['title' => 'Tambah Nama Karyawan', 'side' => 'Karyawan'])
+@extends('layouts/main', ['title' => 'Tambah Nama Karyawan', 'side' => 'Karyawan', 'datepicker' => TRUE])
 
 @section('contents')
 <!-- Content Header (Page header) -->
@@ -17,6 +17,15 @@
 {{-- @dump($clubs)
 @dump($divisis)
 @dump($jabatans) --}}
+{{-- @if ($errors->any())
+<div class="alert alert-danger">
+  <ul>
+    @foreach ($errors->all() as $error)
+    <li>{{ $error }}</li>
+@endforeach
+</ul>
+</div>
+@endif --}}
 
 <!-- Main content  ---------------------------------------------------------------------------------------------------------->
 <section class="content">
@@ -71,7 +80,7 @@
             <label for="divisi" class="col-sm-2 col-form-label">Divisi</label>
             <div class="col-sm-10">
               <select class="form-select @error('divisi') is-invalid @enderror" name="divisi" id="divisi">
-                <option selected>Pilih Divisi</option>
+                <option value="" selected>Pilih Divisi</option>
                 @foreach($divisis as $divisi)
                 <option value="{{$divisi->id}}" {{old('divisi') == $divisi->id ? 'selected' : ''}}>
                   {{$divisi->nama_divisi}}</option>
@@ -88,7 +97,7 @@
             <label for="jabatan" class="col-sm-2 col-form-label">Jabatan</label>
             <div class="col-sm-10">
               <select class="form-select @error('jabatan') is-invalid @enderror" name="jabatan" id="jabatan">
-                <option selected>Pilih Jabatan</option>
+                <option value="" selected>Pilih Jabatan</option>
                 @foreach($jabatans as $jabatan)
                 <option value="{{$jabatan->id}}" {{old('jabatan') == $jabatan->id ? 'selected' : ''}}>
                   {{$jabatan->nama_jabatan}}</option>
@@ -106,9 +115,9 @@
             <div class="col-sm-10">
               <select class="form-select @error('jenis_kelamin') is-invalid @enderror" name="jenis_kelamin"
                 id="jenis_kelamin">
-                <option value="" selected>Pilih Gol Darah</option>
-                <option value="Laki-Laki">Laki-Laki</option>
-                <option value="Perempuan">Perempuan</option>
+                <option value="" selected>Pilih Jenis Kelamin</option>
+                <option value="Laki-Laki" {{old('jenis_kelamin') == "Laki-Laki" ? 'selected' : ''}}>Laki-Laki</option>
+                <option value="Perempuan" {{old('jenis_kelamin') == "Perempuan" ? 'selected' : ''}}>Perempuan</option>
               </select>
               @error('jenis_kelamin')
               <div id="jenis_kelamin" class="invalid-feedback">
@@ -190,13 +199,23 @@
           <div class="mb-2 row">
             <label for="tanggal_lahir" class="col-sm-2 col-form-label">Tanggal lahir</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control @error('tanggal_lahir') is-invalid @enderror" id="tanggal_lahir"
-                name="tanggal_lahir" value="{{ old('tanggal_lahir') }}" placeholder="Tanggal lahir">
-              @error('tanggal_lahir')
-              <div id="tanggal_lahir" class="invalid-feedback">
-                {{ $message }}
+
+              <div class="input-group date" id="reservationdate_1" data-target-input="nearest">
+                <div class="input-group-append" data-target="#reservationdate_1" data-toggle="datetimepicker">
+                  <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                </div>
+                <input type="text"
+                  class="form-control datetimepicker-input @error('tanggal_lahir') is-invalid @enderror"
+                  id="tanggal_lahir" name="tanggal_lahir" data-target="#reservationdate_1" data-toggle="datetimepicker"
+                  value="{{ old('tanggal_lahir') }}" placeholder="Tanggal lahir" />
+                @error('tanggal_lahir')
+                <div id="tanggal_lahir" class="invalid-feedback">
+                  {{ $message }}
+                </div>
+                @enderror
               </div>
-              @enderror
+              {{-- <input type="text" class="form-control @error('tanggal_lahir') is-invalid @enderror" id="tanggal_lahir"
+                name="tanggal_lahir" value="{{ old('tanggal_lahir') }}" placeholder="Tanggal lahir"> --}}
             </div>
           </div>
           <div class="mb-2 row">
@@ -229,10 +248,10 @@
             <div class="col-sm-10">
               <select class="form-select @error('gol_darah') is-invalid @enderror" name="gol_darah" id="gol_darah">
                 <option value="" selected>Pilih Gol Darah</option>
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="AB">AB</option>
-                <option value="O">O</option>
+                <option value="A" {{old('gol_darah') == "A" ? 'selected' : ''}}>A</option>
+                <option value="B" {{old('gol_darah') == "B" ? 'selected' : ''}}>B</option>
+                <option value="AB" {{old('gol_darah') == "AB" ? 'selected' : ''}}>AB</option>
+                <option value="O" {{old('gol_darah') == "O" ? 'selected' : ''}}>O</option>
               </select>
               @error('gol_darah')
               <div id="gol_darah" class="invalid-feedback">
@@ -246,11 +265,11 @@
             <div class="col-sm-10">
               <select class="form-select @error('agama') is-invalid @enderror" name="agama" id="agama">
                 <option value="" selected>Pilih Agama</option>
-                <option value="ISLAM">ISLAM</option>
-                <option value="KATOLIK">KATOLIK</option>
-                <option value="HINDU">HINDU</option>
-                <option value="BUDDHA">BUDDHA</option>
-                <option value="PROTESTAN">PROTESTAN</option>
+                <option value="ISLAM" {{old('agama') == "ISLAM" ? 'selected' : ''}}>ISLAM</option>
+                <option value="KATOLIK" {{old('agama') == "KATOLIK" ? 'selected' : ''}}>KATOLIK</option>
+                <option value="HINDU" {{old('agama') == "HINDU" ? 'selected' : ''}}>HINDU</option>
+                <option value="BUDDHA" {{old('agama') == "BUDDHA" ? 'selected' : ''}}>BUDDHA</option>
+                <option value="PROTESTAN" {{old('agama') == "PROTESTAN" ? 'selected' : ''}}>PROTESTAN</option>
               </select>
               @error('agama')
               <div id="agama" class="invalid-feedback">
@@ -265,10 +284,13 @@
               <select class="form-select @error('status_pernikahan') is-invalid @enderror" name="status_pernikahan"
                 id="status_pernikahan">
                 <option value="" selected>Pilih Status Pernikahan</option>
-                <option value="Belum Menikah">Belum Menikah</option>
-                <option value="Menikah">Menikah</option>
-                <option value="Cerai Hidup">Cerai Hidup</option>
-                <option value="Cerai Mati">Cerai Mati</option>
+                <option value="Belum Menikah" {{old('status_pernikahan') == "Belum Menikah" ? 'selected' : ''}}>Belum
+                  Menikah</option>
+                <option value="Menikah" {{old('status_pernikahan') == "Menikah" ? 'selected' : ''}}>Menikah</option>
+                <option value="Cerai Hidup" {{old('status_pernikahan') == "Cerai Hidup" ? 'selected' : ''}}>Cerai Hidup
+                </option>
+                <option value="Cerai Mati" {{old('status_pernikahan') == "Cerai Mati" ? 'selected' : ''}}>Cerai Mati
+                </option>
               </select>
               @error('status_pernikahan')
               <div id="status_pernikahan" class="invalid-feedback">
@@ -283,12 +305,12 @@
               <select class="form-select @error('tanggungan_anak') is-invalid @enderror" name="tanggungan_anak"
                 id="tanggungan_anak">
                 <option value="" selected>Pilih Tanggungan Anak</option>
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
+                <option value="0" {{old('tanggungan_anak') == "0" ? 'selected' : ''}}>0</option>
+                <option value="1" {{old('tanggungan_anak') == "1" ? 'selected' : ''}}>1</option>
+                <option value="2" {{old('tanggungan_anak') == "2" ? 'selected' : ''}}>2</option>
+                <option value="3" {{old('tanggungan_anak') == "3" ? 'selected' : ''}}>3</option>
+                <option value="4" {{old('tanggungan_anak') == "4" ? 'selected' : ''}}>4</option>
+                <option value="5" {{old('tanggungan_anak') == "5" ? 'selected' : ''}}>5</option>
               </select>
               @error('tanggungan_anak')
               <div id="tanggungan_anak" class="invalid-feedback">
@@ -347,12 +369,13 @@
             </div>
           </div>
           <div class="mb-2 row">
-            <label for="no_darurat" class="col-sm-2 col-form-label">Nomer Telpon Darurat</label>
+            <label for="no_telpon_darurat" class="col-sm-2 col-form-label">Nomer Telpon Darurat</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control @error('no_darurat') is-invalid @enderror" id="no_darurat"
-                name="no_darurat" value="{{ old('no_darurat') }}" placeholder="Nomer Telpon Darurat">
-              @error('no_darurat')
-              <div id="no_darurat" class="invalid-feedback">
+              <input type="text" class="form-control @error('no_telpon_darurat') is-invalid @enderror"
+                id="no_telpon_darurat" name="no_telpon_darurat" value="{{ old('no_telpon_darurat') }}"
+                placeholder="Nomer Telpon Darurat">
+              @error('no_telpon_darurat')
+              <div id="no_telpon_darurat" class="invalid-feedback">
                 {{ $message }}
               </div>
               @enderror
@@ -361,20 +384,29 @@
           <div class="mb-2 row">
             <label for="tgl_masuk" class="col-sm-2 col-form-label">Tanggal Masuk</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control @error('tgl_masuk') is-invalid @enderror" id="tgl_masuk"
-                name="tgl_masuk" value="{{ old('tgl_masuk') }}" placeholder="Tanggal Masuk">
-              @error('tgl_masuk')
-              <div id="tgl_masuk" class="invalid-feedback">
-                {{ $message }}
+              <div class="input-group date" id="reservationdate_2" data-target-input="nearest">
+                <div class="input-group-append" data-target="#reservationdate_2" data-toggle="datetimepicker">
+                  <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                </div>
+                <input type="text" class="form-control datetimepicker-input @error('tgl_masuk') is-invalid @enderror"
+                  data-target="#reservationdate_2" data-toggle="datetimepicker" id="tgl_masuk" name="tgl_masuk"
+                  value="{{ old('tgl_masuk') }}" placeholder="Tanggal Masuk" />
+                @error('tgl_masuk')
+                <div id="tgl_masuk" class="invalid-feedback">
+                  {{ $message }}
+                </div>
+                @enderror
               </div>
-              @enderror
+              {{-- <input type="text" class="form-control @error('tgl_masuk') is-invalid @enderror" id="tgl_masuk"
+                name="tgl_masuk" value="{{ old('tgl_masuk') }}" placeholder="Tanggal Masuk"> --}}
             </div>
           </div>
+          {{-- <input type="hidden" name="tgl_perhitungan"> --}}
           <div class="mb-2 row">
             <label for="checkbox_ktp" class="col-sm-2 col-form-label"></label>
             <div class="col-sm-10">
               <div class="icheck-primary">
-                <input type="checkbox" name="status_karyawan" id="status_karyawan"
+                <input type="checkbox" name="status_karyawan" id="status_karyawan" value="AKTIF"
                   {{ old('status_karyawan') ? 'checked' : '' }}>
                 <label for="status_karyawan">Status Karywan Aktif!</label>
               </div>

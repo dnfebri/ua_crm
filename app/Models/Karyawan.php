@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Karyawan extends Model
 {
@@ -38,4 +39,23 @@ class Karyawan extends Model
         'tgl_perhitungan',
         'status_karyawan'
     ];
+
+    public function getAll()
+    {
+        return DB::table('karyawans')
+            ->join('clubs', 'clubs.id', '=', 'karyawans.id')
+            ->join('divisis', 'divisis.id', '=', 'karyawans.id')
+            ->join('jabatans', 'jabatans.id', '=', 'karyawans.id')
+            ->get();
+    }
+
+    public function getShow($nik)
+    {
+        return DB::table('karyawans')
+            ->where('karyawans.nik', $nik)
+            ->join('clubs', 'clubs.id', '=', 'karyawans.id')
+            ->join('divisis', 'divisis.id', '=', 'karyawans.id')
+            ->join('jabatans', 'jabatans.id', '=', 'karyawans.id')
+            ->first();
+    }
 }
