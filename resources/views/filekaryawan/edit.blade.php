@@ -6,7 +6,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1 class="m-0">Upload File Karyawan</h1>
+        <h1 class="m-0">Edit File Karyawan</h1>
       </div>
 
     </div><!-- /.row -->
@@ -24,8 +24,8 @@
       <div class="col-sm-4">
 
         <div class="card">
-          <img src="{{url('img/karyawan/foto/default.jpg')}}" class="img-fluid img-thumbnail rounded mx-auto d-block"
-            alt="..." style="width: 13rem;">
+          <img src="{{url('img/karyawan')}}{{ $filekaryawan->foto ?? '/default.png' }}"
+            class="img-fluid img-thumbnail rounded mx-auto d-block" alt="..." style="width: 13rem;">
           <div class="card-body">
             <h3 class="font-weight-bold">{{ $data->nama_karyawan }}</h3>
             <h4 class="font-weight-bold">{{ $data->nik }}</h4>
@@ -53,7 +53,7 @@
       <div class="col-sm-8">
         <div class="card card-secondary">
           <div class="card-header">
-            <h3 class="card-title font-weight-bold">Upload File</h3>
+            <h3 class="card-title font-weight-bold">Edit File</h3>
 
             <div class="card-tools">
               <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -65,9 +65,11 @@
             </div>
           </div>
           <div class="card-body">
-            <form action="{{ route('filekaryawan.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('filekaryawan.update', ['filekaryawan'=>$filekaryawan->id]) }}" method="post"
+              enctype="multipart/form-data">
+              @method('put')
               @csrf
-              <input type="text" name="id_karyawan" id="id_karyawan" value="{{ $data->id }}" hidden>
+              {{-- <input type="text" name="id_karyawan" id="id_karyawan" value="{{ $data->id }}" hidden> --}}
               <div class="mb-3 row">
                 <label for="img_foto" class="col-lg-3 col-form-label">Foto Karyawan</label>
                 <div class="col-lg-9">

@@ -3,9 +3,12 @@
 @section('auth')
 <div class="login-box">
   <!-- /.login-logo -->
-  <div class="card card-outline card-primary">
+  <div class="card card-outline card-success">
     <div class="card-header text-center">
-      <a href="/" class="h1 text-decoration-none"><b>Admin</b></a>
+      <a href="/" class="h1 text-decoration-none">
+        <img src="{{ url('img/icon/urbanathletes.png') }}" alt="Urban Athletes" class="w-25">
+        <b>Login</b>
+      </a>
     </div>
     <div class="card-body">
       <p class="login-box-msg">Sign in to start your session</p>

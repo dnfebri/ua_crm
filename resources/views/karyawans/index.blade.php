@@ -24,6 +24,8 @@
     <div id="massage" data-massage="{{ session('massage') }}"></div>
     @endif
 
+    {{-- @dump($karyawan) --}}
+
     <div class="row">
       <div class="col">
         <a href="{{ route('karyawan.create') }}" class="btn btn-primary mb-3">Tambah Karyawan</a>
@@ -48,7 +50,7 @@
               <td>{{ $k->nama_divisi }}</td>
               <td>{{ $k->nama_jabatan }}</td>
               <td>
-                <a href="{{ route('karyawan.show', ['karyawan' => $k->id]) }}"
+                <a href="{{ route('karyawan.show', ['karyawan' => $k->nik]) }}"
                   class="badge bg-black rounded-pill text-decoration-none">Detail</a>
                 <a href="#" class="badge bg-green rounded-pill text-decoration-none">Edit</a>
                 <a href="#" class="badge bg-red rounded-pill text-decoration-none">Delete</a>

@@ -121,9 +121,9 @@ class KaryawanController extends Controller
      * @param  \App\Models\Karyawan  $karyawan
      * @return \Illuminate\Http\Response
      */
-    public function show(Karyawan $karyawan)
+    public function show($karyawan)
     {
-        $data = $this->KaryawanModel->getShow($karyawan->nik);
+        $data = $this->KaryawanModel->getShow($karyawan);
         $filekaryawan = Filekaryawan::where('id_karyawan', $data->id)->first();
         // dd($filekaryawan);
         return view('karyawans.show', compact(['data', 'filekaryawan']));

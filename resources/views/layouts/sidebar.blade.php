@@ -1,11 +1,12 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
 	<!-- Brand Logo -->
 	<a href="index.html" class="brand-link bg-white pb-2 text-decoration-none">
-		{{-- <img src="dist/img/bpjskt.png" alt="AdminLTE Logo" class="brand-image img-circle"> --}}
-		<b>LOGO</b>
+		<img src="{{ url('img/icon/logo_ua.png') }}" alt="Urban Athletes" class="brand-image ms-1">
+		{{-- <b>LOGO</b> --}}
+
 		<span class="brand-text font-weight-light">
 			{{-- <img src="dist/img/bpjskt text.png" alt="BPJS Ketenagakerjaan" class="" style="height: 35px;"> --}}
-			<b>Urban Athletes</b>
+			<b class="text-dark font-weight-bold">Urban </b>Athletes
 		</span>
 	</a>
 

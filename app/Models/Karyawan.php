@@ -43,9 +43,10 @@ class Karyawan extends Model
     public function getAll()
     {
         return DB::table('karyawans')
-            ->join('clubs', 'clubs.id', '=', 'karyawans.id')
-            ->join('divisis', 'divisis.id', '=', 'karyawans.id')
-            ->join('jabatans', 'jabatans.id', '=', 'karyawans.id')
+            ->join('clubs', 'clubs.id', '=', 'karyawans.club')
+            ->join('divisis', 'divisis.id', '=', 'karyawans.divisi')
+            ->join('jabatans', 'jabatans.id', '=', 'karyawans.jabatan')
+            ->orderBy('karyawans.id', 'desc')
             ->get();
     }
 
@@ -53,9 +54,9 @@ class Karyawan extends Model
     {
         return DB::table('karyawans')
             ->where('karyawans.nik', $nik)
-            ->join('clubs', 'clubs.id', '=', 'karyawans.id')
-            ->join('divisis', 'divisis.id', '=', 'karyawans.id')
-            ->join('jabatans', 'jabatans.id', '=', 'karyawans.id')
+            ->join('clubs', 'clubs.id', '=', 'karyawans.club')
+            ->join('divisis', 'divisis.id', '=', 'karyawans.divisi')
+            ->join('jabatans', 'jabatans.id', '=', 'karyawans.jabatan')
             ->first();
     }
 }

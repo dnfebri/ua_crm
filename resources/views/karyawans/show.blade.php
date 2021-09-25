@@ -164,7 +164,8 @@
         <h3 class="card-title font-weight-bold">File Pendukung</h3>
         <div class="card-tools">
           @if($filekaryawan != NULL)
-          <a href="{{ route('filekaryawan.edit', ['filekaryawan'=>$data->nik]) }}" class="btn btn-warning py-0">Edit</a>
+          <a href="{{ route('filekaryawan.edit', ['filekaryawan'=>$data->nik]) }}"
+            class="btn btn-warning py-0 text-dark font-weight-bold"><i class="fas fa-edit me-md-1"></i> Edit</a>
           @endif
           <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
             <i class="fas fa-minus"></i>

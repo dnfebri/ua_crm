@@ -75,3 +75,20 @@ inputImg.forEach(function (el) {
 
 // action view gambar tambah Akhir ==================>
 // ==================================================>
+
+// ==================================================>
+// checkbox_ktp =====================================>
+
+const checkKtp = document.getElementById('checkbox_ktp');
+if (checkKtp) {
+    checkKtp.onclick = function () {
+        const alamatKtp = document.getElementById('alamat_ktp')
+        const toglAlamat = document.getElementById('alamat_tmpt_tinggal');
+        toglAlamat.toggleAttribute('readonly')
+        toglAlamat.setAttribute('value', alamatKtp.value)
+        // console.log(alamatKtp.value);
+    }
+}
+
+// checkbox_ktp Akhir ===============================>
+// ==================================================>

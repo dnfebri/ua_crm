@@ -70,6 +70,7 @@ Route::middleware('auth')->group(function () {
       Route::get('{filekaryawan}/edit', [FilekaryawanController::class, 'edit'])->name('edit');
 
       // Proses Update akan dibuat menimpa file yang lama dan nama data di database tidak berubah
+      // == jika file yang di uploat extensinya berbeda gimana  ??
       Route::put('/{filekaryawan}', [FilekaryawanController::class, 'update'])->name('update');
    });
 
